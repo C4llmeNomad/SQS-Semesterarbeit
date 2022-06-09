@@ -9,7 +9,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -93,7 +93,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -162,10 +162,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\domin\\Dropbox\\Studium\\SQS\\Arbeit\\Anwendung\\SQS-Semesterarbeit\\SQS-Semesterarbeit\\FileWriter\\csvconfigwriter.cpp"
+        "C:\\Users\\domin\\Dropbox\\Studium\\SQS\\Arbeit\\Anwendung\\SQS-Semesterarbeit\\SQS-Semesterarbeit\\filewriter.cpp"
     ],
     "directory": "C:/Users/domin/Dropbox/Studium/SQS/Arbeit/Anwendung/build-SQS-Semesterarbeit-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/domin/Dropbox/Studium/SQS/Arbeit/Anwendung/SQS-Semesterarbeit/SQS-Semesterarbeit/FileWriter/csvconfigwriter.cpp"
+    "file": "C:/Users/domin/Dropbox/Studium/SQS/Arbeit/Anwendung/SQS-Semesterarbeit/SQS-Semesterarbeit/filewriter.cpp"
 },
 {
     "arguments": [
@@ -177,7 +177,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -261,7 +261,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -345,7 +345,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -429,7 +429,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -513,7 +513,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -582,10 +582,10 @@
         "-Wno-unknown-warning-option",
         "-Wno-documentation-unknown-command",
         "-fno-delayed-template-parsing",
-        "C:\\Users\\domin\\Dropbox\\Studium\\SQS\\Arbeit\\Anwendung\\SQS-Semesterarbeit\\SQS-Semesterarbeit\\FileWriter\\csvconfigwriter.h"
+        "C:\\Users\\domin\\Dropbox\\Studium\\SQS\\Arbeit\\Anwendung\\SQS-Semesterarbeit\\SQS-Semesterarbeit\\filewriter.h"
     ],
     "directory": "C:/Users/domin/Dropbox/Studium/SQS/Arbeit/Anwendung/build-SQS-Semesterarbeit-Desktop_Qt_6_2_4_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/domin/Dropbox/Studium/SQS/Arbeit/Anwendung/SQS-Semesterarbeit/SQS-Semesterarbeit/FileWriter/csvconfigwriter.h"
+    "file": "C:/Users/domin/Dropbox/Studium/SQS/Arbeit/Anwendung/SQS-Semesterarbeit/SQS-Semesterarbeit/filewriter.h"
 },
 {
     "arguments": [
@@ -597,7 +597,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -681,7 +681,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -765,7 +765,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -849,7 +849,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",
@@ -933,7 +933,7 @@
         "-I",
         "C:\\Qt\\Tools\\QtCreator\\share\\qtcreator\\cplusplus\\wrappedQtHeaders\\QtCore",
         "-I",
-        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-yhCUem\\clang-uiheader-NHeymD",
+        "C:\\Users\\domin\\AppData\\Local\\Temp\\QtCreator-dRPqal\\clang-uiheader-wtgfWG",
         "-nostdinc",
         "-nostdinc++",
         "-std=gnu++1z",

@@ -3,17 +3,6 @@
 
 #include <QString>
 
-
-
-
-/* Connect Button der ne Weile sinnlose dinge tut, dann label umstellt und Text zu reconnect macht x
- * slider für geschwindigkeit Y
- * Button für Start und Stop Y
- * Text Input, Checkbox für ??? -> Settingsdialog
- * Label (Status) Anzeige Y
- */
-
-
 MainWindow::MainWindow()
     : ui(new Ui::MainWindow)
 {

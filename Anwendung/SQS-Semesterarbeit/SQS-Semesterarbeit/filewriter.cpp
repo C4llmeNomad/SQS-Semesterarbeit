@@ -1,4 +1,4 @@
-#include "csvconfigwriter.h"
+#include "filewriter.h"
 
 #include <QDir>
 #include <QFileInfo>
@@ -7,16 +7,16 @@
 #include <QTextStream>
 
 
-CSVConfigWriter::CSVConfigWriter(QFileInfo filePath)
+FileWriter::FileWriter(QFileInfo filePath)
 {
    // m_filePath = Files::checkFilePathAndName(filePath.absoluteFilePath(), m_filePath, {".csv"}, "config.csv");
 }
-CSVConfigWriter::~CSVConfigWriter()
+FileWriter::~FileWriter()
 {
 }
 
 
-void CSVConfigWriter::writeFile()
+void FileWriter::writeFile()
 {
 
     QFile outdatedFile(m_filePath + ".old");

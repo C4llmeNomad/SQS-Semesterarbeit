@@ -11,15 +11,28 @@
 			\item Sie sind Kosten- und Zeiteffizienter als manuelle Tests
 		\end{itemize}		
 		
-		Der Global Quality Report zeigt, dass mehr als 60 \% der Unternehmen aufgrund der höheren Testabdeckung durch Testautomatisierung in der Lage sind, Fehler schneller zu erkennen. Darüber hinaus stellten 57 \% der Befragten fest, dass die Wiederverwendung von Testfällen durch den Einsatz von Automatisierung zunahm.
+		Der Global Quality Report zeigt, dass mehr als 60 \% der Unternehmen aufgrund der höheren Testabdeckung durch Testautomatisierung in der Lage sind, Fehler schneller zu erkennen. Darüber hinaus stellten 57 \% der Befragten fest, dass die Wiederverwendung von Testfällen durch den Einsatz von Automatisierung zunahm. Automatisiertes Testing gilt als de facto Standard in der Software Entwicklung \cite{capgemini2021microfocus}. 
 		
-		Obwohl sich die Testautomatisierung in der agilen Welt durchgesetzt hat, ist das manuelle Testen nach wie vor wichtig. Lesen Sie diesen ausführlichen Leitfaden über manuelle Tests, um zu verstehen, warum man sie nicht ganz vermeiden kann.
+		%Auch wenn automatisiertes Testing die nötigen manuellen Tests nicht vollständig ersetzen kann 
 		
-		Für Teams ist es äußerst wichtig, das richtige Gleichgewicht zwischen manuellen und automatisierten Tests zu finden. Denn jedes Projekt ist einzigartig, und es gilt, verschiedene Aspekte wie wirtschaftliche Machbarkeit, zeitliche Beschränkungen und die Art der durchzuführenden Tests zu berücksichtigen. Hier müssen die Teams fundierte Entscheidungen treffen, was manchmal eine Herausforderung sein kann. Dies bringt uns zu einem wichtigen Thema bezüglich der Herausforderungen beim automatisierten UI-Testing.
+		Es äußerst wichtig, das richtige Gleichgewicht zwischen manuellen und automatisierten Tests zu finden. Jedes Projekt ist einzigartig, und es gilt, verschiedene Aspekte wie wirtschaftliche Machbarkeit, zeitliche Beschränkungen und die Art der durchzuführenden Tests zu berücksichtigen. Hier muss jedes Teams fundierte Entscheidungen treffen. Dieses Dokument dient als Entscheidungsgrundlage um ein Framework zu wählen, mit dem automatisierte UI Tests für Windows Qt-Anwendungen durchgeführt werden. Die Zielgruppe dieses Dokuments sind Softwareentwickler die mit dem C++ Qt Framework vertraut sind.
 		
+		\newpage
+	\section{Anwendung}
+		\paragraph{} Die Anwendung, die zum Vergleich der Frameworks verwendet wird, ist eine stark vereinfachte Version der Anlagensteuerungssoftware der Ambright GmbH.  
 		
+		\begin{figure}[t]		
+			\centering
+			\includegraphics[width=\linewidth]{\figdir/Anwendung}
+				
+			\caption[Anwendung]
+			{Anwendung an der die Tests Evaluiert werden}
+			\label{FIG:Anwendung}
+		\end{figure}
+		\FloatBarrier
 		
-		
+		\paragraph{} Die Anwendung lässt sich in 4 Bereiche Unterteilen. Der erste Bereich, links oben, ist ein Text Feld. Dieses Text Feld kann mit User Input gefüllt werden.  
+		 
 	\section{Anforderungen}
 		\paragraph{} Die Folgende Tabelle gibt einen Überblick über die Anforderungen, welche an die UI Testing Frameworks gestellt werden. Anhand dieser Anforderungen werden die gewählten Frameworks verglichen und eine Entscheidung getroffen. Jede Anforderung ist mit einer ID versehen. Diese IDs werden im Dokument zur Referenzierung verwendet.
 		%\begin{center}
@@ -51,9 +64,9 @@
 				\hline
 				10 & Reife / Robustheit & Stabilität des Frameworks \\ 
 				\hline
-				11 & In QT Editor ausführbar & Sind die Tests im QT Editor ausführbar \\
+				11 & In Qt Editor ausführbar & Sind die Tests im Qt Editor ausführbar \\
 				\hline 
-				12 & Abdeckung der QT Features & Mögliche Abdeckung der mit QT erstellbaren Widgets  \\
+				12 & Abdeckung der Qt Features & Mögliche Abdeckung der mit Qt erstellbaren Widgets  \\
 				\hline 
 				13 & Laufzeit & Wie viel Zeit beansprucht die Ausführung eines Tests \\
 				\hline
@@ -64,14 +77,14 @@
 			\end{tabularx}
 		  \end{table}
 		
+		\FloatBarrier
 	%	\end{center}
 		
 		\paragraph{} Die Kosten die für das UI Testing Framework anfallen sollen so gering wie möglich sein. Bestenfalls sollten keine Kosten anfallen. Dies ist direkt mit der Lizenz verknüpft. Eine GPL Lizenz oder vergleichbares wäre daher vorteilhaft. Wenn der Source Code des UI Testing Frameworks frei verfügbar ist bestünde die Möglichkeit, änderungen oder ergänzungen am Framework vorzunehmen, sofern die Lizenz dies erlaubt. 
-		Wichtig ist, wie viel Aufwand das schreiben oder Aufnehmen eines Tests ist, sowie die Zeit die benötigt wird um mit dem Framework familär zu werden sollte gering sein. Dabei wäre es ebenso von vorteil wenn man den Testcode Lesen, nachvollziehen und verstehen kann. Ebenso wird verglichen wie viel Aufwand eine Änderung eines Tests ist, wenn sich beispielsweise die Position eines Buttons verändert. Wenn das Framework nicht in die Verwendete Pipeline integriert werden kann, kann es nicht automatisiert verwendet werden und würde damit ausgeschlossen werden. Der beste Fall hierfür wäre die Möglichkeit die Tests im QT Editor ausführen zu können. Ein weiteres Kriterium ist die Umfangreichheit des Frameworks. Dabei wird gemessen wie weit sich alle durch QT bereit gestellten Widgets testen lassen und ob es die Möglichkeit gibt custom Widgets zu testen. Die Laufzeit der Tests ist ebenso ein Kriterium. Wenn sich 10 Tests innerhalb von 2 Minuten ausführen und auswerten lassen. Dabei wird gleichzeitig die Anforderng der automatisierten Testauswertung in Betracht gezogen. Zuletzt wird untersucht wie groß die Community der Frameworks auf seiten wie Stackoverflow, Github oder einem eigenem Forum ist, sowie die die aussicht auf zukünftige Updates
+		Wichtig ist, wie viel Aufwand das schreiben oder Aufnehmen eines Tests ist, sowie die Zeit die benötigt wird um mit dem Framework familär zu werden sollte gering sein. Dabei wäre es ebenso von vorteil wenn man den Testcode Lesen, nachvollziehen und verstehen kann. Ebenso wird verglichen wie viel Aufwand eine Änderung eines Tests ist, wenn sich beispielsweise die Position eines Buttons verändert. Wenn das Framework nicht in die Verwendete Pipeline integriert werden kann, kann es nicht automatisiert verwendet werden und würde damit ausgeschlossen werden. Der beste Fall hierfür wäre die Möglichkeit die Tests im Qt Editor ausführen zu können. Ein weiteres Kriterium ist die Umfangreichheit des Frameworks. Dabei wird gemessen wie weit sich alle durch Qt bereit gestellten Widgets testen lassen und ob es die Möglichkeit gibt custom Widgets zu testen. Die Laufzeit der Tests ist ebenso ein Kriterium. Wenn sich 10 Tests innerhalb von 2 Minuten ausführen und auswerten lassen. Dabei wird gleichzeitig die Anforderng der automatisierten Testauswertung in Betracht gezogen. Zuletzt wird untersucht wie groß die Community der Frameworks auf seiten wie Stackoverflow, Github oder einem eigenem Forum ist, sowie die die aussicht auf zukünftige Updates
 		
 		-Robustheit
 
-	\section{Anwendung}
 %https://stackoverflow.com/questions/4163639/best-approach-to-qt-ui-testing/4166429#4166429
 %https://www.ranorex.com/windows-desktop-test-automation/
 %https://resources.qt.io/videos/automated-qt-gui-testing-tools-qtws21
@@ -84,7 +97,7 @@
 		
 		OHT bietet ein plattformübergreifendes, offenes Design zur Unterstützung von ereignisbasierten GUI-Plattformen. Da es nicht in den Code eingreift kann es in laufende und ältere Entwicklungen integriert werden. Als Ergebnis bietet das Framework eine anpassbare, erweiterbare, skalierbare und robuste Basis zur Unterstützung der Automatisierung von GUI-Testprozessen.
 		
-		Eine fertiger Build für Windows QT-Anwendungen wird von OHT Angeboten. Dieser Build wird in dieser Arbeit verwendet.
+		Eine fertiger Build für Windows Qt-Anwendungen wird von OHT Angeboten. Dieser Build wird in dieser Arbeit verwendet.
 		
 		\section{Testaufbau}
 		\section{Test Beispiele}
@@ -100,7 +113,7 @@
 \chapter{Vergleich}
 
 	\section{Open HMI Tester}
-	\section{QT Test}
+	\section{Qt Test}
 	\section{Vergleich}
 
 \chapter{Fazit}

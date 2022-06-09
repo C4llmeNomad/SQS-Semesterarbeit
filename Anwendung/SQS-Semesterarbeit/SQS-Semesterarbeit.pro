@@ -38,7 +38,7 @@ CONFIG(debug, debug|release): DESTDIR = $$OUT_PWD/debug
 
 SOURCES += \
     SQS-Semesterarbeit/main.cpp \
-    SQS-Semesterarbeit/FileWriter/csvconfigwriter.cpp \
+    SQS-Semesterarbeit/filewriter.cpp \
     SQS-Semesterarbeit/machinecontrol.cpp \
     SQS-Semesterarbeit/mainwindow.cpp \
 
@@ -52,7 +52,7 @@ CONFIG(debug, debug|release): \
 
 
 HEADERS += \
-    SQS-Semesterarbeit/FileWriter/csvconfigwriter.h \
+    SQS-Semesterarbeit/filewriter.h \
     SQS-Semesterarbeit/machinecontrol.h \
     SQS-Semesterarbeit/mainwindow.h \
 

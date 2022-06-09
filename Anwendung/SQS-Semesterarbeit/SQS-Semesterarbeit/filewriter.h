@@ -1,5 +1,5 @@
-#ifndef CSVCONFIGWRITER_H
-#define CSVCONFIGWRITER_H
+#ifndef FILEWRITER_H
+#define FILEWRITER_H
 
 
 #include <QFileInfo>
@@ -9,7 +9,7 @@
 /**
  * @brief The CSVConfigWriter class: writes the relevant PLC settings into a CSV File
  */
-class CSVConfigWriter :  public QObject
+class FileWriter :  public QObject
 {
     Q_OBJECT
 
@@ -18,12 +18,12 @@ public:
      * @brief CSVConfigWriter: Constructor
      * @param filePath: Path for the .csv file
      */
-    CSVConfigWriter(QFileInfo filePath);
+    FileWriter(QFileInfo filePath);
 
     /**
      * @brief Destructor
      */
-    ~CSVConfigWriter();
+    ~FileWriter();
 
 public slots:
     /**
@@ -36,4 +36,4 @@ private:
     QString m_filePath;
 };
 
-#endif // CSVCONFIGWRITER_H
+#endif // FILEWRITER_H
