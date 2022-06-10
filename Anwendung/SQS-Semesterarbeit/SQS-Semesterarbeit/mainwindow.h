@@ -20,7 +20,7 @@ public:
 public slots:
     void updateConnectionDisplay(bool connected);
     void updateErrorDisplay(bool errors);
-    void updateEStopDisplay(bool eStop);
+    void updateEStopDisplay(bool eStopActivated);
     void updateRunningDisplay(bool running);
 
 private:
@@ -28,6 +28,9 @@ private:
     void initSpeedSlider();
     void updateSliderValue();
     void initMachineControl();
+    void startMachine();
+    void processInput(QString input);
+    void initInputField();
 
 private:
     Ui::MainWindow *ui;

@@ -48,7 +48,7 @@ SOURCES += \
 CONFIG(debug, debug|release): \
     SOURCES += \
         SQS-Semesterarbeit/UnitTest/testsuite.cpp \
-        SQS-Semesterarbeit/UnitTest/Tests/tst_awlcomments.cpp \
+        SQS-Semesterarbeit/UnitTest/QT_Tests/qttests.cpp \
 
 
 HEADERS += \
@@ -60,7 +60,7 @@ HEADERS += \
 CONFIG(debug, debug|release): \
     HEADERS  +=    \
         SQS-Semesterarbeit/UnitTest/testsuite.h \
-        SQS-Semesterarbeit/UnitTest/Tests/tst_awlcomments.h \
+        SQS-Semesterarbeit/UnitTest/QT_Tests/qttests.h \
 
 
 FORMS += \

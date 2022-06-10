@@ -10,11 +10,13 @@ class MachineControl : public QObject
     Q_OBJECT
 public:
     MachineControl();
+    void error();
+    void disconnect();
 
 public slots:
     void startMachine();
     void emergencyStop();
-    void errorReset();
+    void resetErrorAndEStop();
     void connect();
 
 signals:
@@ -22,12 +24,13 @@ signals:
     void resetAllErrors(bool resetAllErrors);
     void machineRunning(bool running);
     void eStopActivated(bool eStop);
+    void resetEStop(bool eStop);
 
 private:
-    bool m_connection;
-    bool m_error;
-    bool m_eStop;
-    bool m_running;
+    bool m_hasConnection;
+    bool m_hasErrors;
+    bool m_eStopActivated;
+    bool m_isRunning;
 };
 
 #endif // MACHINESCONTROL_H

@@ -24,11 +24,11 @@ int main(int argc, char *argv[])
     QApplication::setApplicationVersion(QString(GIT_VERSION));
 
 
-
     // Run tests if in debug mode
 #ifdef QT_DEBUG
     TestSuite::executeTests();
 #endif
+
     // Show main window
     MainWindow window;
     window.show();

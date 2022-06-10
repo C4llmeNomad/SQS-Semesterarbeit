@@ -6,18 +6,30 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>827</width>
-    <height>620</height>
+    <width>850</width>
+    <height>617</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>SQS Semesterarbeit</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>840</width>
+     <height>600</height>
+    </size>
+   </property>
    <widget class="QWidget" name="gridLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>10</x>
       <y>0</y>
       <width>821</width>
       <height>571</height>
@@ -36,22 +48,8 @@
         <string>Machine Status</string>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_connection">
-          <property name="text">
-           <string>Connection</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_Error">
-          <property name="text">
-           <string>Error</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
-         <widget class="QLabel" name="label_eStopStatus">
+        <item row="3" column="2">
+         <widget class="QLabel" name="label_runningStatus">
           <property name="minimumSize">
            <size>
             <width>40</width>
@@ -69,8 +67,55 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="2">
-         <widget class="QLabel" name="label_runningStatus">
+        <item row="3" column="0">
+         <widget class="QLabel" name="label_running">
+          <property name="text">
+           <string>Running</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_Error">
+          <property name="text">
+           <string>Error</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="2">
+         <widget class="QLabel" name="label_errorStatus">
+          <property name="minimumSize">
+           <size>
+            <width>40</width>
+            <height>15</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="lineWidth">
+           <number>2</number>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QLabel" name="label_connection">
+          <property name="text">
+           <string>Connection</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="label_eStop">
+          <property name="text">
+           <string>Emergency Stop</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="2">
+         <widget class="QLabel" name="label_eStopStatus">
           <property name="minimumSize">
            <size>
             <width>40</width>
@@ -104,39 +149,6 @@
           </property>
           <property name="text">
            <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QLabel" name="label_running">
-          <property name="text">
-           <string>Running</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QLabel" name="label_errorStatus">
-          <property name="minimumSize">
-           <size>
-            <width>40</width>
-            <height>15</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="lineWidth">
-           <number>2</number>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_eStop">
-          <property name="text">
-           <string>Emergency Stop</string>
           </property>
          </widget>
         </item>
@@ -215,7 +227,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QPushButton" name="pushButton_errorReset">
+         <widget class="QPushButton" name="pushButton_resetErrorAndEStop">
           <property name="minimumSize">
            <size>
             <width>100</width>
@@ -223,7 +235,7 @@
            </size>
           </property>
           <property name="text">
-           <string>Error Reset</string>
+           <string>Reset Error and Stop</string>
           </property>
          </widget>
         </item>
@@ -231,7 +243,7 @@
       </widget>
      </item>
      <item row="5" column="2">
-      <layout class="QGridLayout" name="gridLayout_4">
+      <layout class="QGridLayout" name="gridLayout_settings">
        <item row="2" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox_settings">
          <property name="title">
@@ -239,6 +251,29 @@
          </property>
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="1" column="1">
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="4" column="1">
+           <widget class="QLabel" name="label_speedValue">
+            <property name="text">
+             <string>6</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="1">
            <widget class="QSlider" name="horizontalSlider_speed">
             <property name="minimum">
              <number>1</number>
@@ -257,33 +292,17 @@
             </property>
            </widget>
           </item>
-          <item row="3" column="1">
-           <widget class="QLabel" name="label_speedValue">
-            <property name="text">
-             <string>6</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <spacer name="verticalSpacer">
-            <property name="orientation">
-             <enum>Qt::Vertical</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>20</width>
-              <height>40</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item row="1" column="0">
+          <item row="2" column="0">
            <widget class="QLabel" name="label_speed">
             <property name="text">
              <string>Geschwindigkeit</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0" colspan="2">
+           <widget class="QPushButton" name="pushButton_clearInput">
+            <property name="text">
+             <string>Clear Input</string>
             </property>
            </widget>
           </item>
@@ -312,7 +331,7 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <widget class="QTextEdit" name="textEdit"/>
+         <widget class="QTextEdit" name="textEdit_input"/>
         </item>
        </layout>
       </widget>
@@ -325,7 +344,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>827</width>
+     <width>850</width>
      <height>21</height>
     </rect>
    </property>
