@@ -15,7 +15,7 @@ void QtGuiTest::initTestCase()
 
     m_panel->show();
 
-    while ( !m_panel->isVisible() ) {
+    while (!m_panel->isVisible()) {
          QTest::qWait(200);
     }
 
@@ -79,7 +79,6 @@ void QtGuiTest::testClearInput()
     QPushButton *clearButton = m_panel->findChild<QPushButton *>("pushButton_clearInput");
     QVERIFY2(clearButton, "Clear Button not found");
 
-
     QTest::mouseMove(clearButton, QPoint(50, 10));
     QTest::mouseClick(clearButton, Qt::LeftButton, Qt::NoModifier, QPoint(50, 10));
     QTest::qWait(50);
@@ -88,12 +87,7 @@ void QtGuiTest::testClearInput()
 
 void QtGuiTest::testDisconnect()
 {
-    // make sure we are connected via the GUI
-    QLabel *connectionStatusLabel = m_panel->findChild<QLabel *>("label_connectionStatus");
-    QVERIFY2(connectionStatusLabel, "Connect Status Label not found");
-    if(!connectionStatusLabel->styleSheet().contains("background-color: rgb(27, 193, 00)")){
-        testConnectButton();
-    }
+    QVERIFY2(establishConnection(), "Connection could not be established");
 
     QTextEdit *textField = m_panel->findChild<QTextEdit *>("textEdit_input");
     QVERIFY2(textField, "Input Field not found");
@@ -112,19 +106,15 @@ void QtGuiTest::testDisconnect()
     QTest::mouseClick(startButton, Qt::LeftButton, Qt::NoModifier, QPoint(50, 10));
 
     QTest::qWait(50);
+    QLabel *connectionStatusLabel = m_panel->findChild<QLabel *>("label_connectionStatus");
     QVERIFY2(connectionStatusLabel->styleSheet().contains("background-color: rgb(203, 47, 47)"), "Color of label_connectionStatus is not Red");
 
     textField->clear();
 }
 
 void QtGuiTest::testErrorInput()
-{
-    // make sure we are connected via the GUI
-    QLabel *connectionStatusLabel = m_panel->findChild<QLabel *>("label_connectionStatus");
-    QVERIFY2(connectionStatusLabel, "Connect Status Label not found");
-    if(!connectionStatusLabel->styleSheet().contains("background-color: rgb(27, 193, 00)")){
-        testConnectButton();
-    }
+{    
+    QVERIFY2(establishConnection(), "Connection could not be established");
 
     QTextEdit *textField = m_panel->findChild<QTextEdit *>("textEdit_input");
     QVERIFY2(textField, "Input Field not found");
@@ -156,6 +146,77 @@ void QtGuiTest::testErrorInput()
     QVERIFY2(errorStatusLabel->styleSheet().contains("background-color: rgb(27, 193, 00)"), "Color of label_errorStatus is not Green");
 
     textField->clear();
+}
+
+void QtGuiTest::testRandomInput()
+{
+    QVERIFY2(establishConnection(), "Connection could not be established");
+
+    QTextEdit *textField = m_panel->findChild<QTextEdit *>("textEdit_input");
+    QVERIFY2(textField, "Input Field not found");
+
+    QTest::mouseMove(textField, QPoint(50, 50));
+    QTest::mouseClick(textField, Qt::LeftButton, Qt::NoModifier, QPoint(50, 50));
+
+    QString randomInputString;
+    for (uint i = 0; i < QRandomGenerator::global()->generate() % 264; i ++){
+        randomInputString.append(QString::number(QRandomGenerator::global()->generate64()));
+    }
+
+    QTest::keyClicks(textField, randomInputString);
+    QTest::qWait(50);
+    QCOMPARE(textField->toPlainText(), randomInputString);
+
+    QPushButton *startButton = m_panel->findChild<QPushButton *>("pushButton_start");
+    QVERIFY2(startButton, "Start Button not found");
+    QTest::mouseMove(startButton, QPoint(50, 10));
+    QTest::mouseClick(startButton, Qt::LeftButton, Qt::NoModifier, QPoint(50, 10));
+
+    QTest::qWait(50);
+
+    QVERIFY2(connectedAndRunning(), "Machine is not Connected and Running after random Input");
+
+    textField->clear();
+}
+
+bool QtGuiTest::establishConnection()
+{
+    bool connectionEstablished = false;
+
+    QLabel *connectionStatusLabel = m_panel->findChild<QLabel *>("label_connectionStatus");
+    if(!connectionStatusLabel->styleSheet().contains("background-color: rgb(27, 193, 00)")) {
+        QPushButton *button = m_panel->findChild<QPushButton *>("pushButton_connect");
+
+        QTest::mouseMove(button, QPoint(20, 10));
+        QTest::mouseClick(button, Qt::LeftButton, Qt::NoModifier, QPoint(20, 10));
+
+        QTest::qWait(250);
+
+        connectionEstablished = connectionStatusLabel->styleSheet().contains("background-color: rgb(27, 193, 00)");
+    } else {
+        connectionEstablished = true;
+    }
+
+    return connectionEstablished;
+}
+
+bool QtGuiTest::connectedAndRunning()
+{
+    bool connectedAndRunning = true;
+
+    QLabel *errorStatusLabel = m_panel->findChild<QLabel *>("label_errorStatus");
+    connectedAndRunning = connectedAndRunning && (errorStatusLabel->styleSheet().contains("background-color: rgb(27, 193, 00)"));
+
+    QLabel *connectionStatusLabel = m_panel->findChild<QLabel *>("label_connectionStatus");
+    connectedAndRunning = connectedAndRunning && (connectionStatusLabel->styleSheet().contains("background-color: rgb(27, 193, 00)"));
+
+    QLabel *eStopStatusLabel = m_panel->findChild<QLabel *>("label_eStopStatus");
+    connectedAndRunning = connectedAndRunning && (eStopStatusLabel->styleSheet().contains("background-color: rgb(27, 193, 00)"));
+
+    QLabel *runningStatusLabel = m_panel->findChild<QLabel *>("label_runningStatus");
+    connectedAndRunning = connectedAndRunning && (runningStatusLabel->styleSheet().contains("background-color: rgb(27, 193, 00)"));
+
+    return connectedAndRunning;
 }
 
 static QtGuiTest instance;

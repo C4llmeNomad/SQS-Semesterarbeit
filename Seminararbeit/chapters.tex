@@ -21,6 +21,7 @@
 	\section{Anwendung}
 		\paragraph{} Die Anwendung, die zum Vergleich der Frameworks verwendet wird, ist eine stark vereinfachte Version der Anlagensteuerungssoftware der Ambright GmbH.  
 		
+		\FloatBarrier
 		\begin{figure}[t]		
 			\centering
 			\includegraphics[width=\linewidth]{\figdir/Anwendung}
@@ -31,14 +32,14 @@
 		\end{figure}
 		\FloatBarrier
 		
-		\paragraph{} Die Anwendung () lässt sich in 4 Bereiche Unterteilen. Der erste Bereich, links oben, ist ein Text Feld. Dieses Text Feld kann mit User Input gefüllt werden. Der Input wird durch drücken des Start Buttons im vierten Bereich, rechts unten, evaluiert und ausgeführt. 
+		\paragraph{} Die Anwendung (Abbildung \ref{FIG:Anwendung}) lässt sich in 4 Bereiche Unterteilen. Der erste Bereich, links oben, ist ein Text Feld. Dieses Text Feld kann mit User Input gefüllt werden. Der Input wird durch drücken des Start Buttons im vierten Bereich, rechts unten, evaluiert. Wenn der Input 'disconnect' oder 'error' beinhält werden entsprechende Funktionen ausgeführt und der Status der Maschine verändert.  
 		
 		Im zweiten Bereich, rechts oben, sind 4 Statusanzeigen zu sehen. Die Statusanzeigen Signalisieren durch Farben den Status der Maschine. Wenn eine aktive Verbindung besteht ist die Anzeige der Connection grün, andernfalls rot. 
 		Falls beim ausführen des Inputs aus dem ersten Bereich ein Fehler auftritt wird die Error Anzeige rot. Wenn kein Fehler auftritt ist sie grün eingefärbt. 
 		Die Emergency Stop Anzeige zeigt an wenn der Nothalt Schalter gedrückt wurde mit roter Farbe. Falls der Nothalt Schalter nicht gedrückt wurde ist die Anzeige grün. 
-		Die letzte Anzeige ist grün wenn gerade ein Script aus dem Inputfeld aufgeführt wird, andernfalls grau.
+		Die letzte Anzeige ist grün wenn gerade ein Script aus dem Inputfeld ausgeführt wird, und bleibt grün sofern keine Fehler auftreten oder Stop gedrückt wird.
 		
-		Im dritten Bereich, links unten, befinden sich Settings zur Maschine. Durch den Slider kann die Geschwindigkeit innerhalb des Wertebereichs 1 - 10 eingestellt werden. Der eingestellte Geschwindigkeitswert wird durch ein Label unter dem Slider angezeigt.
+		Im dritten Bereich, links unten, befinden sich Settings zur Maschine. Mit dem Button Clear Input werden alle Zeichen aus dem  Input Feld aus dem ersten Bereich entfernt. Durch den Slider kann die Geschwindigkeit innerhalb des Wertebereichs 1 bis 10 eingestellt werden. Der eingestellte Geschwindigkeitswert wird durch ein Label unter dem Slider angezeigt.
 		
 		Im letzten Bereich, rechts unten, befinden sich 4 Buttons. Der erste Button stellt eine Verbindung her. Der zweite Button setzt den Error Status zurück. Die letzten beiden Buttons sind zum Starten und Stoppen der Maschine.
 		 
@@ -91,7 +92,7 @@
 	%	\end{center}
 		
 		\paragraph{} Die Kosten die für das UI Testing Framework anfallen sollen so gering wie möglich sein. Bestenfalls sollten keine Kosten anfallen. Dies ist direkt mit der Lizenz verknüpft. Eine GPL Lizenz oder vergleichbares wäre daher vorteilhaft. Wenn der Source Code des UI Testing Frameworks frei verfügbar ist bestünde die Möglichkeit, änderungen oder ergänzungen am Framework vorzunehmen, sofern die Lizenz dies erlaubt. 
-		Wichtig ist, wie viel Aufwand das schreiben oder Aufnehmen eines Tests ist, sowie die Zeit die benötigt wird um mit dem Framework familär zu werden sollte gering sein. Dabei wäre es ebenso von vorteil wenn man den Testcode Lesen, nachvollziehen und verstehen kann. Ebenso wird verglichen wie viel Aufwand eine Änderung eines Tests ist, wenn sich beispielsweise die Position eines Buttons verändert. Wenn das Framework nicht in die Verwendete Pipeline integriert werden kann, kann es nicht automatisiert verwendet werden und würde damit ausgeschlossen werden. Der beste Fall hierfür wäre die Möglichkeit die Tests im Qt Editor ausführen zu können. Ein weiteres Kriterium ist die Umfangreichheit des Frameworks. Dabei wird gemessen wie weit sich alle durch Qt bereit gestellten Widgets testen lassen und ob es die Möglichkeit gibt custom Widgets zu testen. Die Laufzeit der Tests ist ebenso ein Kriterium. Wenn sich 10 Tests innerhalb von 2 Minuten ausführen und auswerten lassen. Dabei wird gleichzeitig die Anforderng der automatisierten Testauswertung in Betracht gezogen. Zuletzt wird untersucht wie groß die Community der Frameworks auf seiten wie Stackoverflow, Github oder einem eigenem Forum ist, sowie die die aussicht auf zukünftige Updates
+		Wichtig ist, wie viel Aufwand das schreiben oder Aufnehmen eines Tests ist, sowie die Zeit die benötigt wird um mit dem Framework familär zu werden sollte gering sein. Dabei wäre es ebenso von vorteil wenn man den Testcode Lesen, nachvollziehen und verstehen kann. Ebenso wird verglichen wie viel Aufwand eine Änderung eines Tests ist, wenn sich beispielsweise die Position eines Buttons verändert. Wenn das Framework nicht in die Verwendete Pipeline integriert werden kann, kann es nicht automatisiert verwendet werden und würde damit ausgeschlossen werden. Der beste Fall hierfür wäre die Möglichkeit die Tests im Qt Editor ausführen zu können. Ein weiteres Kriterium ist der Umfang des Frameworks. Dabei wird gemessen wie weit sich alle durch Qt bereit gestellten Widgets testen lassen und ob es die Möglichkeit gibt custom Widgets zu testen. Die Laufzeit der Tests ist ebenso ein Kriterium. Wenn sich 10 Tests innerhalb von 2 Minuten ausführen und auswerten lassen. Dabei wird gleichzeitig die Anforderng der automatisierten Testauswertung in Betracht gezogen. Zuletzt wird untersucht wie groß die Community der Frameworks auf seiten wie Stackoverflow, Github oder einem eigenem Forum ist, sowie die die aussicht auf zukünftige Updates
 		
 		%-Robustheit
 
@@ -109,16 +110,32 @@
 		
 		Eine fertiger Build für Windows Qt-Anwendungen wird von OHT Angeboten. Dieser Build wird in dieser Arbeit verwendet.
 		
-		\section{Testaufbau}
-		\section{Test Beispiele}
 		
-\chapter{QT Test}
+		\section{Durchführung der Tests}
+		\section{Tests}
+		
+\chapter{Qt Test}
 		%https://doc.qt.io/qt-5/qttestlib-tutorial3-example.html
 		%http://blog.davidecoppola.com/2018/01/gui-unit-testing-with-qt-test-introduction/
 		
-		\section{Einführung QT Test}
-		\section{Testaufbau}
-		\section{Test Beispiele}
+		\section{Einführung Qt Test}
+		\paragraph{} Qt Test ist ein Teil des Qt Frameworks. Es bietet Klassen für Unit-Tests von Qt-Anwendungen und -Bibliotheken. Alle öffentlichen Methoden befinden sich im QTest-Namensraum. Darüber hinaus bietet die Klasse QSignalSpy eine einfache Introspektion der Signale und Slots von Qt, und der QAbstractItemModelTester ermöglicht das nicht-destruktive Testen von Elementmodellen. Dadurch können auch UIs getestet werden. Es lassen sich Maus und Tastatur Eingaben durch ein von der Anwendung unabhängiges Eventsystem simulieren \cite{documentationQt}.
+		
+		Beispiel für einen Test:
+		\begin{lstlisting}[language=C++]
+void TestGui::testGui()
+{
+	QLineEdit lineEdit;
+	
+	QTest::keyClicks(&lineEdit, "hello world");
+		
+	QCOMPARE(lineEdit.text(), QString("hello world"));
+}
+		\end{lstlisting}
+		\paragraph{} Die Funktion TestGui::testGui() erstellt ein Eingabefeld. Durch die Funktion QTest::keyClicks() wird das als Parameter übergebene QWdiget fokussiert und der als Parameter übergebene String als Tastatur Eingabe dem QWdiget übergeben. Mit dem Makro QCOMPARE() werden zwei Werte verglichen. Wenn die beiden übergebenen Werte den selben Inhalt haben wird das Programm fortgeführt. Sollte dies nicht der Fall ist wird der eine Fehlermeldung im Log ausgegeben und die Funktion beendet. Für Mauseingaben gibt es mehrere Funktionen. Unter anderem die Funktionen QTest::mouseMove() und QTest::mouseClick(). QTest::mouseMove() bewegt den Mauszeiger auf die übergebene Position, ausgehend von dem Übergebenen QWdiget. QTest::mouseClick() führt einen Mausklick auf die übergebene Position für die übergebene Zeit aus.
+		
+		\section{Durchführung der Tests}
+		\section{Tests}
 		
 \chapter{Vergleich}
 
@@ -127,19 +144,3 @@
 	\section{Vergleich}
 
 \chapter{Fazit}
-%		\begin{figure}[t]		
-%			\centering
-%			\includegraphics[width=\linewidth]{\figdir/TuringTest1}
-%			
-%			\caption[Imitation Game]
-%			{Grafische Darstellung des Party-Spiels \glqq Imitation Game\grqq{} (Quelle: eigene Abbildung)}
-%			\label{FIG:TuringTest1}
-%		\end{figure}
-		%	\FloatBarrier
-
-%		\begin{itemize}
-%			\item Store
-%			\item Executive Unit
-%			\item Control
-%		\end{itemize}
-	
