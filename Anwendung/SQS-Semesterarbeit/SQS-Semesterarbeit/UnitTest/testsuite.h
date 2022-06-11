@@ -12,7 +12,7 @@
         class MyTestName : public TestSuite
         {
             Q_OBJECT
-        private:
+        private Q_SLOTS:
             void initTestCase();
             void cleanupTestCase();
 
@@ -21,7 +21,7 @@
         };
 
         // Register the test at the testsuite
-        static AwlParserTest instance;
+        static MyTestName instance;
 */
 
 class TestSuite : public QObject

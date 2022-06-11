@@ -59,6 +59,7 @@ HEADERS += \
 
 CONFIG(debug, debug|release): \
     HEADERS  +=    \
+        SQS-Semesterarbeit/main.h \
         SQS-Semesterarbeit/UnitTest/testsuite.h \
         SQS-Semesterarbeit/UnitTest/QT_Tests/qttests.h \
 

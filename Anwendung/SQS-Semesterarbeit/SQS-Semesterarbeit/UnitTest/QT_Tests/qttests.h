@@ -14,7 +14,6 @@ class QtGuiTest : public TestSuite
 
 friend class MainWindow;
 
-
 private Q_SLOTS:
     void initTestCase();
     void cleanupTestCase();
@@ -28,21 +27,24 @@ private Q_SLOTS:
 
 private:
     /**
-     * @brief establishConnection: verifies that the machine is connected using the GUI
+     * @brief establishConnection: verifies that the machine is connected
+     * using the GUI
      * @return true if there is a established connection, otherwise false
      */
     bool establishConnection();
 
     /**
-     * @brief connectedAndRunning: Checks if the Machine is connected and running
-     * For Integrity it is also verified that there are no active errors or
-     * that the emergency stop is activated
-     * @return true if the machine is connected and running, otherwise false
+     * @brief connectedAndRunning: Checks if the Machine is connected and
+     * running
+     * For Integrity it is also verified that there are no active errors
+     * or that the emergency stop is activated
+     * @return true if the machine is connected and running, otherwise
+     * false
      */
     bool connectedAndRunning();
 
 private:
-    QWidget *m_panel;
+    QWidget *m_window;
 };
 
 #endif // QT_TESTS_H
