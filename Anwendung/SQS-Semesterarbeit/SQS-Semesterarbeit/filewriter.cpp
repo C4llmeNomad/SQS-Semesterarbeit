@@ -1,4 +1,5 @@
 #include "filewriter.h"
+#include "qdebug.h"
 
 #include <QDir>
 #include <QFileInfo>

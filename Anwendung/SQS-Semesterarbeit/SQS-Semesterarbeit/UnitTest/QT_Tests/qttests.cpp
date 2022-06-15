@@ -159,7 +159,7 @@ void QtGuiTest::testRandomInput()
     QTest::mouseClick(textField, Qt::LeftButton, Qt::NoModifier, QPoint(50, 50));
 
     QString randomInputString;
-    for (uint i = 0; i < QRandomGenerator::global()->generate() % 264; i ++){
+    for (uint i = 0; i < QRandomGenerator::global()->generate() % 256; i ++){
         randomInputString.append(QString::number(QRandomGenerator::global()->generate64()));
     }
 
