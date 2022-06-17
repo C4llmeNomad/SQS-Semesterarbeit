@@ -1,7 +1,9 @@
 \chapter*{Abstract}
 \thispagestyle{empty}
 
-	\paragraph{} TODO
+	\paragraph{} Das Automatisierte Testen von UIs während der Entwicklung ist Industriestandard und bietet viele Vorteile wie beispielsweise Wiederverwendbarkeit Skalierbarkeit und Kosteneffizienz. Um dieses bisher ungenutzte Potenzial vollständig auszuschöpfen soll ein Framework gefunden werden welches ermöglicht Automatisierte UI Tests für Windows Qt-Anwendungen durchzuführen. Die Anforderungen, die an das Framework gestellt werden, sind in Tabelle 1.1 aufgeführt. Die drei möglichen Kandidaten, die für die Tests infrage kommen sind Qt Test, Squish und OpenHMI Tester. Qt Test ist Teil von Qt. Die Test-Cases werden in C++ geschrieben und bei jedem Aufruf der Software im Debug Modus ausgeführt. Qt Test hat die gestellten Anforderungen am besten erfüllt. Squish ist ein von Froglogic angebotenes Framework. Die Tests können in verschiedenen Sprachen, wie beispielsweise JavaScript oder Python geschrieben werden, oder über die Squish IDE aufgenommen und generiert werden. In OpenHMI Tester werden die Test-Cases durch das UI aufgenommen. Da OpenHMI Tester offiziell nicht auf der aktuellen Version von Qt läuft und auch auf der von Entwickler angegebenen Version nicht in einen lauffähigen Stand gebracht werden konnte, wurde es nicht weiter evaluiert.
+	
+	\paragraph{} Insgesamt erfüllten sowohl Squish als auch Qt Test die gestellten Anforderungen gut. Da Qt Test kostengünstiger, leichter aufzusetzen ist und die Test-Cases eine kürzere Laufzeit haben, fällt die Entscheidung auf Qt Test.
 
 
 \bigskip

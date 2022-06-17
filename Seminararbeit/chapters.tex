@@ -1,23 +1,24 @@
 \chapter{Automatisierte UI Tests}
-	\section{Einleitung} 
+	\paragraph{} Das erste Kapitel beginnt mit einer Erklärung, warum automatisierte UI Tests durchgeführt werden sollten und welche Vorteile sie bieten. Danach wird die Anwendung, anhand der die beiden ausgewählten Frameworks verglichen werden, vorgestellt. Kapitel 1.3 stellt die gestellten Anforderungen in Tabellenform dar und im letzten Kapitel wird beschrieben, wie es zur Wahl der beiden Frameworks kam.
+	\section{Vorteile von automatisierten UI Tests} 
 		\paragraph{} Automatisiertes UI-Testing bietet zahlreiche Vorteile in der Softwareentwicklung. Einige davon sind:
 		
 		\begin{itemize}
 			\item Automatisierte Tests haben vergleichbare Ergebnisse und sind weniger anfällig für menschliche Fehler
 			\item Höhere Testabdeckungsrate der Software
-			\item Erhöhte Testabdeckung fördert debugging
+			\item Erhöhte Testabdeckung fördert Debugging
 			\item Erstellter Testcode kann wiederverwendet werden, wodurch das Testen leicht skalierbar wird
 			\item Automatisierte Tests sind im Vergleich zu manuellen Tests viel schneller
 			\item Sie sind Kosten- und Zeiteffizienter als manuelle Tests
 		\end{itemize}		
 		
-		Der Global Quality Report zeigt, dass mehr als 60 \% der Unternehmen aufgrund der höheren Testabdeckung durch Testautomatisierung in der Lage sind, Fehler schneller zu erkennen. Darüber hinaus stellten 57 \% der Befragten fest, dass die Wiederverwendung von Testfällen durch den Einsatz von Automatisierung zunahm. Automatisiertes Testing gilt als de facto Standard in der Software Entwicklung \cite{capgemini2021microfocus}. 
+		Der Global Quality Report zeigt, dass mehr als 60 \% der Unternehmen aufgrund der höheren Testabdeckung durch Testautomatisierung in der Lage sind, Fehler schneller zu erkennen. Darüber hinaus stellten 57 \% der Befragten fest, dass die Wiederverwendung von Testfällen durch den Einsatz von Automatisierung zunahm. Automatisiertes Testing gilt als de facto Standard in der Softwareentwicklung \cite{capgemini2021microfocus}. 
 		
 		%Auch wenn automatisiertes Testing die nötigen manuellen Tests nicht vollständig ersetzen kann 
 		
-		Es äußerst wichtig, das richtige Gleichgewicht zwischen manuellen und automatisierten Tests zu finden. Jedes Projekt ist einzigartig, und es gilt, verschiedene Aspekte wie wirtschaftliche Machbarkeit, zeitliche Beschränkungen und die Art der durchzuführenden Tests zu berücksichtigen. Hier muss jedes Teams fundierte Entscheidungen treffen. Dieses Dokument dient als Entscheidungsgrundlage um ein Framework zu wählen, mit dem automatisierte UI Tests für Windows Qt-Anwendungen durchgeführt werden. Die Zielgruppe dieses Dokuments sind Softwareentwickler die mit dem C++ Qt Framework vertraut sind.
+		Es äußerst wichtig, das richtige Gleichgewicht zwischen manuellen und automatisierten Tests zu finden. Jedes Projekt ist einzigartig, und es gilt, verschiedene Aspekte wie wirtschaftliche Machbarkeit, zeitliche Beschränkungen und die Art der durchzuführenden Tests zu berücksichtigen. Hier muss jedes Teams fundierte Entscheidungen treffen. Dieses Dokument dient als Entscheidungsgrundlage, um ein Framework zu wählen, mit dem automatisierte UI Tests für Windows Qt-Anwendungen durchgeführt werden. Die Zielgruppe dieses Dokuments sind Softwareentwickler, die mit dem C++ Qt Framework vertraut sind.
 		
-		\newpage
+		%\newpage
 	\section{Anwendung}
 		\paragraph{} Die Anwendung, die zum Vergleich der Frameworks verwendet wird, ist eine stark vereinfachte Version der Anlagensteuerungssoftware der Ambright GmbH.  
 		
@@ -27,17 +28,17 @@
 			\includegraphics[width=\linewidth]{\figdir/Anwendung}
 				
 			\caption[Anwendung]
-			{Anwendung an der die Tests Evaluiert werden}
+			{Anwendung an der die Tests evaluiert werden}
 			\label{FIG:Anwendung}
 		\end{figure}
 		\FloatBarrier
 		
-		\paragraph{} Die Anwendung (Abbildung \ref{FIG:Anwendung}) lässt sich in 4 Bereiche Unterteilen. Der erste Bereich, links oben, ist ein Text Feld. Dieses Text Feld kann mit User Input gefüllt werden. Der Input wird durch drücken des Start Buttons im vierten Bereich, rechts unten, evaluiert. Wenn der Input 'disconnect' oder 'error' beinhält werden entsprechende Methoden ausgeführt und der Status der Maschine verändert.  
+		\paragraph{} Die Anwendung (Abbildung \ref{FIG:Anwendung}) lässt sich in 4 Bereiche unterteilen. Der erste Bereich, links oben, ist ein Textfeld. Dieses Textfeld kann mit User Input gefüllt werden. Der Input wird durch Drücken des Startbuttons im vierten Bereich, rechts unten, evaluiert. Wenn der Input 'disconnect' oder 'error' beinhaltet, werden entsprechende Methoden ausgeführt und der Status der Maschine verändert.  
 		
-		Im zweiten Bereich, rechts oben, sind 4 Statusanzeigen zu sehen. Die Statusanzeigen Signalisieren durch Farben den Status der Maschine. Wenn eine aktive Verbindung besteht ist die Anzeige der Connection grün, andernfalls rot. 
-		Falls beim ausführen des Inputs aus dem ersten Bereich ein Fehler auftritt wird die Error Anzeige rot. Wenn kein Fehler auftritt ist sie grün eingefärbt. 
-		Die Emergency Stop Anzeige zeigt an wenn der Nothalt Schalter gedrückt wurde mit roter Farbe. Falls der Nothalt Schalter nicht gedrückt wurde ist die Anzeige grün. 
-		Die letzte Anzeige ist grün wenn gerade ein Script aus dem Inputfeld ausgeführt wird, und bleibt grün sofern keine Fehler auftreten oder Stop gedrückt wird.
+		Im zweiten Bereich, rechts oben, sind 4 Statusanzeigen zu sehen. Die Statusanzeigen signalisieren durch Farben den Status der Maschine. Wenn eine aktive Verbindung besteht, ist die Anzeige der Connection grün, andernfalls rot.
+		Falls beim Ausführen des Inputs aus dem ersten Bereich ein Fehler auftritt, wird die Error Anzeige rot. Sollte kein Fehler auftritt, ist sie grün eingefärbt.
+		Die Emergency Stop Anzeige zeigt an, wenn der Nothalt Schalter gedrückt wurde, mit roter Farbe. Falls der Nothalt Schalter nicht gedrückt wurde, ist die Anzeige grün.
+		Die letzte Anzeige ist grün, wenn gerade ein Script aus dem Inputfeld ausgeführt wird, und bleibt grün, sofern keine Fehler auftreten oder Stop gedrückt wird.
 		
 		Im dritten Bereich, links unten, befinden sich Settings zur Maschine. Mit dem Button Clear Input werden alle Zeichen aus dem  Input Feld aus dem ersten Bereich entfernt. Durch den Slider kann die Geschwindigkeit innerhalb des Wertebereichs 1 bis 10 eingestellt werden. Der eingestellte Geschwindigkeitswert wird durch ein Label unter dem Slider angezeigt.
 		
@@ -45,7 +46,7 @@
 		 
 		 \newpage
 	\section{Anforderungen}
-		\paragraph{} Die Folgende Tabell (\ref{TAB:Anforderungstabelle}) gibt einen Überblick über die Anforderungen, welche an die UI Testing Frameworks gestellt werden. Anhand dieser Anforderungen werden die gewählten Frameworks verglichen und eine Entscheidung getroffen. Jede Anforderung ist mit einer ID versehen. Diese IDs werden im Dokument zur Referenzierung verwendet.
+		\paragraph{} Die folgende Tabelle (\ref{TAB:Anforderungstabelle}) gibt einen Überblick über die Anforderungen, welche an die UI Testing Frameworks gestellt werden. Anhand dieser Anforderungen werden die gewählten Frameworks verglichen und eine Entscheidung getroffen. Jede Anforderung ist mit einer ID versehen. Diese IDs werden im Dokument zur Referenzierung verwendet.
 		%\begin{center}
 					
 			\begin{table}%[htdp]
@@ -59,19 +60,19 @@
 				\hline
 				02 & Lizenz & Bestenfalls GPL oder vergleichbar \\
 				\hline
-				03 & Open Source & Source-Code öffentlich verfügbar  \\
+				03 & Open Source & Ist der Source-Code öffentlich verfügbar  \\
 				\hline
 				04 & Integration in vorhandene Pipeline & Wie viel Zeit benötigt es die Tests in die Pipeline zu integrieren \\
 				\hline
 				05 & In Qt Editor ausführbar & Sind die Tests im Qt Editor ausführbar \\
 				\hline 
-				06 & Aufwand & Benötigte Zeit zum erstellen eines Tests \\
+				06 & Aufwand & Benötigte Zeit zum Erstellen eines Tests \\
 				\hline
 				07 & Lesbarkeit & Kann der Testcode von Entwicklern gelesen werden \\  
 				\hline
-				08 & Änderbarkeit & Benötigte Zeit zum ändern eines Tests \\
+				08 & Änderbarkeit & Benötigte Zeit zum Ändern eines Tests \\
 				\hline				
-				09 & Support / Community & Aktivität und Größe der Community (Stackoverflow, eigenes Forum, ...) \\
+				09 & Support / Community & Aktivität und Größe der Community (Stack Overflow, eigenes Forum, ...) \\
 				\hline
 				10 & Reife / Robustheit & Stabilität des Frameworks \\ 
 				\hline
@@ -91,11 +92,14 @@
 		\FloatBarrier
 	%	\end{center}
 		
-		\paragraph{}Anforderung [01] legt fest, dass die Kosten die für das UI Testing Framework anfallen sollen so gering wie möglich sein. Bestenfalls sollten keine Kosten anfallen. Dies ist direkt mit der Anforderung [02] verknüpft. Eine GNU General Public Lizenz oder vergleichbares wäre daher vorteilhaft. [03] Wenn der Source Code des UI Testing Frameworks frei verfügbar ist bestünde die Möglichkeit, Änderungen oder Ergänzungen am Framework vorzunehmen. Die Priorität von [03] ist als eher gering einzustufen. [04] Wenn das Framework nicht in die Verwendete Pipeline integriert werden kann, kann es nicht automatisiert verwendet werden und würde damit direkt ausgeschlossen werden. [05] Der beste Fall hierfür wäre die Möglichkeit die Tests im Qt Editor ausführen zu können. [06] Ebenso wichtig ist, wie viel Aufwand das schreiben oder Aufnehmen eines Tests ist, sowie die benötigte Zeit um mit dem Framework familär zu werden. [07] Dabei ist es ebenso Vorteilhaft wenn man den Testcode Lesen, nachvollziehen und verstehen kann. [08] Ebenso wird verglichen wie viel Aufwand eine Änderung eines Tests ist, wenn sich beispielsweise die Position eines Buttons verändert. [09] Zu untersuchen ist auch, wie groß die Community der Frameworks auf Seiten wie Stack Overflow, Github oder einem eigenem Forum ist. Mit Anforderung [10] wird sichergestellt dass Framework keine bekannten kritischen Bugs hat und bei ordnungsgemäßer Verwendung immer das selbe Ergebnis liefert. Dazu prüft [11] ob die Aussicht auf zukünftige Updates besteht. Ein weiteres Kriterium ist der Umfang des Frameworks. Mit [12] wird gemessen wie weit sich alle durch Qt bereit gestellten Widgets testen lassen und ob es die Möglichkeit gibt custom Widgets zu testen. Für den Konkreten Anwendungsfall sind nur Nutzerinteraktionen mit Tastatur und Maus zu erwarten. [13] Die Laufzeit der Tests ist ebenso ein bedeutendes Kriterium. Mit [14] wird der Umfang und die Qualität der Dokumentation der Frameworks verglichen. Zuletzt wird mit [15] getestet ob sich die Ergebnisse der Tests automatisiert auswerten lassen.
+		\paragraph{}Anforderung [01] legt fest, dass die Kosten, die für das UI Testing Framework anfallen sollen, so gering wie möglich sein. Bestenfalls sollten keine Kosten anfallen. Dies ist direkt mit der Anforderung [02] verknüpft. Eine GNU General Public Lizenz oder vergleichbares wäre daher vorteilhaft. [03] Wenn der Source Code des UI Testing Frameworks frei verfügbar ist, bestünde die Möglichkeit, Änderungen oder Ergänzungen am Framework vorzunehmen. Die Priorität von [03] ist als eher gering einzustufen. [04] Wenn das Framework nicht in die verwendete Pipeline integriert werden kann, kann es nicht automatisiert verwendet werden und würde damit direkt ausgeschlossen werden. [05] Der beste Fall hierfür wäre die Möglichkeit die Tests im Qt Editor ausführen zu können. [06] Ebenso wichtig ist, wie viel Aufwand das Schreiben oder Aufnehmen eines Tests ist, sowie die benötigte Zeit, um mit dem Framework familiär zu werden. [07] Dabei ist es ebenso vorteilhaft, wenn man den Testcode lesen, nachvollziehen und verstehen kann. [08] Ebenso wird verglichen, wie viel Aufwand eine Änderung eines Tests ist, wenn sich beispielsweise die Position eines Buttons verändert.[09] Zu untersuchen ist auch, wie groß die Community der Frameworks auf Seiten wie Stack Overflow, Github oder einem eigenen Forum ist. Mit Anforderung [10] wird sichergestellt, dass Framework keine bekannten kritischen Bugs hat und bei ordnungsgemäßer Verwendung immer dasselbe Ergebnis liefert. Dazu prüft [11], ob die Aussicht auf zukünftige Updates besteht. Ein weiteres Kriterium ist der Umfang des Frameworks. Mit [12] wird gemessen, wie weit sich alle durch Qt bereit gestellten Widgets testen lassen und ob es die Möglichkeit gibt custom Widgets zu testen. Für den konkreten Anwendungsfall sind nur Nutzerinteraktionen mit Tastatur und Maus zu erwarten. [13] Die Laufzeit der Tests ist ebenso ein bedeutendes Kriterium. Mit [14] wird der Umfang und die Qualität der Dokumentation der Frameworks verglichen. Zuletzt wird mit [15] getestet, ob sich die Ergebnisse der Tests automatisiert auswerten lassen.
+		
+		\section{Wahl der Frameworks}
+		\paragraph{}Durch Recherche im Internet wurden 3 Frameworks gefunden, mit denen es möglich ist Qt-Windows Anwendungen zu testen. Als erstes Ergebnis kam das Qt Unit-Test Framework Qt Test, mit dem auch UI Tests möglich sind. Danach wurden sowohl Squish als auch OpenHMI Tester gefunden. Beim Aufbau der Tests für OpenHMI Tester wurde festgestellt, dass OpemHMI Tester nicht mit der neuesten Version von Qt kompatibel ist. Ein Downgrade der Qt Version der Anwendung verlief problemlos. Allerdings konnte nach über 2,5 Tagen OpemHMI Tester nicht zum Laufen gebracht werden. Da das Aufsetzen der anderen beiden Frameworks größtenteils reibungslos verlief, wurde die Entscheidung getroffen OpmenHMI Tester nicht mehr weiter zu betrachten.
 
 \chapter{Squish}
-		
-		\section{Squish}
+		\paragraph{} In diesem Kapitel gibt es eine kurze Einführung zum UI Testing Tool Squish, wie man mit Squish Tests durchführt und die ein Teil der UI Tests für die Anwendung aussehen. 
+		\section{Einführung zu Squish}
 		\paragraph{} Squish ist ein plattformübergreifendes UI- und regression test Tool, das eine Vielzahl von Anwendungen mit UIs testen kann. Unter anderem können Qt-, Java-, Web- und Mobile-Anwendungen getestet werden. Es wird von Froglogic entwickelt und gepflegt. Froglogic hat seinen Hauptsitz in Hamburg und bietet das Tool Squish seit 2003 an\cite{Squish}. Squish erlaubt es sowohl die UI Tests in der bereitgestellten IDE (Abbildung \ref{FIG:Squish}) aufzunehmen und durch die Aufnahme Code zu generieren, als auch den Testcode selbst zu schreiben. Der Testcode kann in JavaScript, Perl, Python, Ruby oder Tcl geschrieben, bzw. generiert werden.
 		
 		%\FloatBarrier
@@ -104,39 +108,39 @@
 			\includegraphics[width=\linewidth]{\figdir/Squish}
 			
 			\caption[Squish IDE]
-			{Squish IDE in der die Tests erstellt werden}
+			{Squish IDE, in der die Tests erstellt werden}
 			\label{FIG:Squish}
 		\end{figure}
-		\FloatBarrier
+		%\FloatBarrier
 		
-		\paragraph{} Als erster Schitt muss eine Test Suite angelegt werden. In der Test Suite wird das GUI toolkit, die Script Sprache der Tests sowie der Pfad zu der zu testenden Anwendung festgelegt. Das GUI toolkit legt fest für welche Art von Anwendung die Tests sind. In diesem Fall wurde Qt festgelegt. Zu einer Test Suite können beliebig viele Test Cases hinzugefügt werden. Die ausgewählte Test Suite sowie die Test Cases sind in der Squish IDE in der linken oberen Ecke angesiedelt (Ausgeschnitten in Abbildung \ref{FIG:testCasesSquish}). In der Mitte befindet sich der Script Editor, mit dem die erstellten Test Cases bearbeitet werden können. Unter dem Script Editor ist eine Anzeige bei der Zwischen den Testergebnissen, einer Zusammenfassung der Testergebnisse, den durch die Tests generierten Logs und der Beschreibung der Test Cases gewechselt werden kann. Um einen Test Case aufzunehmen muss der rote 'record' Button (Abbildung \ref{FIG:testCasesSquish})) gedrückt werden. Mit dem Start der Aufnahme wird sowohl die Anwendung als auch eine Control Bar (Abbildung \ref{FIG:controlBar})) zum steuern der Aufnahme geöffnet. Mit der Control Bar kann die Aufnahme beendet werden sowie Schritte zur Verifizierung als auch einfügen Nutzereingaben für die Anwendung in den Test eingefügt werden. Zur Verifizierung gibt es Verschiedene möglichkeiten. In dieser Arbeit wurde zur Verifizierung die Attribute einzelner UI Elemente abgeglichen. Andere Möglichkeiten wären beispielsweise abgleiche mit Screenshots oder Erkennung durch OCR.
+		\paragraph{} Als erster Schritt muss eine Test-Suite angelegt werden. In der Test-Suite wird das GUI toolkit, die Script Sprache der Tests sowie der Pfad zu der zu testenden Anwendung festgelegt. Das GUI toolkit legt fest, für welche Art von Anwendung die Tests sind. In diesem Fall wurde Qt festgelegt. Zu einer Test-Suite können beliebig viele Test-Cases hinzugefügt werden. Die ausgewählte Test-Suite sowie die Test-Cases sind in der Squish IDE in der linken oberen Ecke angesiedelt (ausgeschnitten in Abbildung \ref{FIG:testCasesSquish}). In der Mitte befindet sich der Script Editor, mit dem die erstellten Test-Cases bearbeitet werden können. Unter dem Script Editor ist eine Anzeige bei der zwischen den Testergebnissen, einer Zusammenfassung der Testergebnisse, den durch die Tests generierten Logs und der Beschreibung der Test Cases gewechselt werden kann. Um einen Test Case aufzunehmen, muss der rote 'record' Button (Abbildung \ref{FIG:testCasesSquish})) gedrückt werden. Mit dem Start der Aufnahme wird sowohl die Anwendung als auch eine Control Bar (Abbildung \ref{FIG:controlBar})) zum Steuern der Aufnahme geöffnet. Mit der Control Bar kann die Aufnahme beendet werden sowie Schritte zur Verifizierung als auch einfügen Nutzereingaben für die Anwendung in den Test eingefügt werden. Zur Verifizierung gibt es verschiedene Möglichkeiten. In dieser Arbeit wurde zur Verifizierung die Attribute einzelner UI Elemente abgeglichen. Andere Möglichkeiten wären beispielsweise Abgleiche mit Screenshots oder Erkennung durch OCR.
 		
 		%\FloatBarrier
 		\begin{figure}[t]		
 			\centering
-			\includegraphics[width=\linewidth]{\figdir/controlBar}
+			\includegraphics[width=.75\linewidth]{\figdir/controlBar}
 			
-			\caption[Squish IDE]
-			{Control Bar mit der die Aufnahme eines Tests gesteuert wird}
+			\caption[Squish Control Bar]
+			{Control Bar, mit der die Aufnahme eines Tests gesteuert wird}
 			\label{FIG:controlBar}
 		\end{figure}
 		\FloatBarrier
 		
 		\section{Durchführung der Tests}
-		\paragraph{} Um einen einzelnen Test oder die gesamte Test Suite zu starten gibt es verschiedene Möglichkeiten. Über die Squish IDE kann ein einzelner Test durch den Grünen Start Button neben dem Test gestartet werden (Abbildung \ref{FIG:testCasesSquish}). Die gesamte Test Suite wird über Run -> Run Test Suite ausgeführt. Um die Tests Automatisiert von der Command Line ausführen zu lassen benötigt es eine laufende Instanz eines squishservers. Squishserver gib es sowohl für Windows als auch Unix Systeme. Mit dem Command \textit{squishrunner --host <IP\_AddressOfSquishServer> --port 4322 --testsuite <PathToTestSuite>} wird die in dem Pfad hinterlegte Test Suite ausgeführt. Der squishserver wird über das Command \textit{squishrunner --host \%SQUISH\_SERVER\_HOST\% --port \%SQUISH\_SERVER\_PORT\% --testsuite \%TESTSUITE\% --reportgen xml2.1,\%REPORTPATH\%/report.xml} gestartet \cite{SquishCLI}. Die dadurch generierte report Datei kann automatisiert ausgewertet werden.
+		\paragraph{} Um einen einzelnen Test oder die gesamte Testsuite zu starten, gibt es verschiedene Möglichkeiten. Über die Squish IDE kann ein einzelner Test durch den Grünen Start Button neben dem Test gestartet werden (Abbildung \ref{FIG:testCasesSquish}). Die gesamte Test-Suite wird über Run -> Run Test Suite ausgeführt. Um die Tests automatisiert von der Command Line ausführen zu lassen, benötigt es eine laufende Instanz eines squishservers. Squishserver gib es sowohl für Windows als auch Unix Systeme. Mit dem Command \textit{squishrunner --host <IP\_AddressOfSquishServer> --port 4322 --testsuite <PathToTestSuite>} wird die in dem Pfad hinterlegte Test Suite ausgeführt. Der squishserver wird über das Command \textit{squishrunner --host \%SQUISH\_SERVER\_HOST\% --port \%SQUISH\_SERVER\_PORT\% --testsuite \%TESTSUITE\% --reportgen xml2.1,\%REPORTPATH\%/report.xml} gestartet \cite{SquishCLI}. Die dadurch generierte report Datei kann automatisiert ausgewertet werden.
 		
 		\begin{figure}[t]		
 			\centering
-			\includegraphics[width=\linewidth]{\figdir/testCasesSquish}
+			\includegraphics[width=.5\linewidth]{\figdir/testCasesSquish}
 		
-			\caption[Squish IDE]
+			\caption[Squish Test Case UI]
 			{Squish IDE, Ausschnitt der Test Suite und Test Cases}
 			\label{FIG:testCasesSquish}
 		\end{figure}
 		\FloatBarrier
 		
 		\section{Tests}
-		Mit dem Test tst\_connectButton wird überprüft ob durch drücken des Connect Buttons die Anzeige Connection grün wird. Dazu wird zuerst mit der Funktion startApplication() die Anwendung gestartet und danach mit der Funktion clickButton() der Connect Button angeklickt. Um zu überprüfen ob die Connected Anzeige grün ist wird die Funktion test.compare() aufgerufen.
+		\paragraph{}Mit dem Test tst\_connectButton wird überprüft, ob durch Drücken des Connect Buttons die Anzeige Connection grün wird. Dazu wird zuerst mit der Funktion startApplication() die Anwendung gestartet und danach mit der Funktion clickButton() der Connect Button angeklickt. Um zu überprüfen, ob die Connected Anzeige grün ist, wird die Funktion test.compare() aufgerufen.
 		\begin{lstlisting}[language=JavaScript, caption=tst\_connectButton]
   function main() {
     startApplication("SQS-Semesterarbeit");
@@ -145,7 +149,7 @@
   }
 		\end{lstlisting}
 		
-		Der zweite Test testet nach starten der Anwendung ob durch bewegen des Sliders das Label, dass die eingestellte Geschwindigkeit anzeigt wird korrekt aktualisiert wird. Der Slider wird durch die Funktion scrollTo() auf die Position 6 bewegt. Darauf folgend wird mit test.compare() verglichen ob das Label den richtigen Wert anzeigt.
+		Der zweite Test testet nach Starten der Anwendung, ob durch Bewegen des Sliders das Label, dass die eingestellte Geschwindigkeit anzeigt wird, korrekt aktualisiert wird. Der Slider wird durch die Funktion scrollTo() auf die Position 6 bewegt. Darauf folgend wird mit test.compare() verglichen, ob das Label den richtigen Wert anzeigt.
 		
 		\begin{lstlisting}[language=JavaScript, caption=tst\_slider]
 function main() {
@@ -156,7 +160,7 @@ function main() {
 
 		\end{lstlisting}
 		
-		Durch den Test Case tst\_errorInput wird nach Anwendugsstart in das input Feld geklickt und dort der String 'error' über die Funktion type() als Keyboard Input eingegeben. Darauf folgend wird der Start Button gedrückt um die Maschine mit dem im Input stehenden Daten zu starten. Da dort 'error' steht wird erwartet, dass die Maschine in den Zustand Error wechselt. Um dies zu überprüfen wird das aussehen der Error Anzeige durch test.compare() abgeglichen.
+		Durch den Test Case tst\_errorInput wird nach Anwendungsstart in das input Feld geklickt und dort der String 'error' über die Funktion type() als Keyboard Input eingegeben. Darauf folgend wird der Start Button gedrückt, um die Maschine mit dem im Input stehenden Daten zu starten. Da dort 'error' steht, wird erwartet, dass die Maschine in den Zustand Error wechselt. Um dies zu überprüfen wird das Aussehen der Error Anzeige durch test.compare() abgeglichen.
 		
 		\begin{lstlisting}[language=JavaScript, caption=tst\_errorInput]
 function main() {
@@ -172,9 +176,9 @@ function main() {
 \end{lstlisting}
 		
 \chapter{Qt Test}
-		
+		\paragraph{}Kapitel drei gibt einen kurzen Überblick zu Qt und Qt Test. Danach wird zur Schau gestellt, wie die Tests in der Entwicklungsumgebung aufgerufen werden und wie ein Teil der UI Tests aussieht.
 		\section{Einführung Qt Test}
-		\paragraph{} Qt ist ein cross-platform Framework zur Entwicklung von Desktop- , Embedded- und Mobile-Anwendungen. Qt ist keine eigenständige Programmiersprache, sondern ein in C++ geschriebenes Framework. Ein Präprozessor, der MOC (Meta-Object Compiler), wird verwendet, um die C++-Sprache um Funktionen wie Signals und Slots zu erweitern. Vor dem Kompilieren analysiert der MOC die in Qt-erweitertem C++ geschriebenen Quelldateien und erzeugt daraus standardkonforme C++-Quellendateien. Somit können das Framework selbst und die Anwendungen/Bibliotheken, die es verwenden, von jedem standardkonformen C++-Compiler kompiliert werden. Qt ist unter kommerziellen sowie open-source Lizenzen verfügbar. Das Framework befindet sich seit 1995 in Entwicklung und erhält seitdem regelmäßig Updates \cite{QtWiki}. Auf Stackoverflow gibt es derzeit 82.522 Fragen mit dem Tag Qt \cite{QtQuestions}. Zudem weißt das Qt Forum eine solide Aktivität auf. Daher ist von einer Mittelgroßen, aktiven Community auszugehen. Für dieses Projekt wird die Qt Version 5.15 verwendet.
+		\paragraph{} Qt ist ein cross-platform Framework zur Entwicklung von Desktop-, Embedded- und Mobile-Anwendungen. Qt ist keine eigenständige Programmiersprache, sondern ein in C++ geschriebenes Framework. Ein Präprozessor, der MOC (Meta-Object Compiler), wird verwendet, um die C++-Sprache um Funktionen wie Signals und Slots zu erweitern. Vor dem Kompilieren analysiert der MOC die in Qt-erweitertem C++ geschriebenen Quelldateien und erzeugt daraus standardkonforme C++-Quellendateien. Somit können das Framework selbst und die Anwendungen/Bibliotheken, die es verwenden, von jedem standardkonformen C++-Compiler kompiliert werden. Qt ist unter kommerziellen sowie open-source Lizenzen verfügbar. Das Framework befindet sich seit 1995 in Entwicklung und erhält seitdem regelmäßig Updates \cite{QtWiki}. Auf Stack Overflow gibt es derzeit 82.522 Fragen mit dem Tag Qt \cite{QtQuestions}. Zudem weist das Qt Forum eine solide Aktivität auf. Daher ist von einer mittelgroßen, aktiven Community auszugehen. Für dieses Projekt wird die Qt Version 5.15 verwendet. 
 				
 		Qt Test ist ein Teil des Qt Frameworks. Es bietet Klassen für Unit-Tests von Qt-Anwendungen und -Bibliotheken. Alle öffentlichen Methoden befinden sich im QTest-Namensraum. Darüber hinaus bietet die Klasse QSignalSpy eine einfache Introspektion der Signale und Slots von Qt, und der QAbstractItemModelTester ermöglicht das nicht-destruktive Testen von Elementmodellen. Dadurch können auch UIs getestet werden. Es lassen sich Maus und Tastatur Eingaben durch ein von der Anwendung unabhängiges Eventsystem simulieren \cite{documentationQt}.
 		
@@ -189,9 +193,9 @@ void TestGui::testGui()
   QCOMPARE(lineEdit.text(), QString("hello world"));
 }
 		\end{lstlisting}
-		\paragraph{} Die Methode TestGui::testGui() erstellt ein Eingabefeld. Durch die Methode QTest::keyClicks() wird das als Parameter übergebene QWdiget fokussiert und der als Parameter übergebene String als Tastatur Eingabe dem QWdiget übergeben. Mit dem Makro QCOMPARE() werden zwei Werte verglichen. Wenn die beiden übergebenen Werte den selben Inhalt haben wird das Programm fortgeführt. Sollte dies nicht der Fall ist wird der eine Fehlermeldung im Log ausgegeben und die Methode beendet. Für Mauseingaben gibt es mehrere Methoden. Unter anderem die Methoden QTest::mouseMove() und QTest::mouseClick(). QTest::mouseMove() bewegt den Mauszeiger auf die übergebene Position, ausgehend von dem Übergebenen QWdiget. QTest::mouseClick() führt einen Mausklick auf die übergebene Position für die übergebene Zeit aus.
+		\paragraph{}Die Methode TestGui::testGui() erstellt ein Eingabefeld. Durch die Methode QTest::keyClicks() wird das als Parameter übergebene QWdiget fokussiert und der als Parameter übergebene String als Tastatureingabe dem QWdiget übergeben. Mit dem Makro QCOMPARE() werden zwei Werte verglichen. Sobald die beiden übergebenen Werte denselben Inhalt haben, wird das Programm fortgeführt. Sollte dies nicht der Fall ist, wird der eine Fehlermeldung im Log ausgegeben und die Methode beendet. Für Mauseingaben gibt es mehrere Methoden. Unter anderem die Methoden QTest::mouseMove() und QTest::mouseClick(). QTest::mouseMove() bewegt den Mauszeiger auf die übergebene Position, ausgehend von dem Übergebenen QWdiget. QTest::mouseClick() führt einen Mausklick auf die übergebene Position für die übergebene Zeit aus.
 		
-		\newpage
+		%\newpage
 		
 		\section{Durchführung der Tests}
 		\paragraph{} Die Tests werden durch folgende Zeilen in der main Methode aufgerufen:
@@ -200,7 +204,7 @@ void TestGui::testGui()
     TestSuite::executeTests();
 #endif
 		\end{lstlisting}
-		Ob das QT\_DEBUG flag gesetzt ist hängt von den Parametern mit denen das Programm aufgerufen wird ab.
+		Ob das QT\_DEBUG flag gesetzt ist, hängt von den Parametern, mit denen das Programm aufgerufen wird ab.
 		
 		Die Methode TestSuite::executeTests() führt alle registrierten Tests aus und meldet, ob sie erfolgreich waren oder nicht.
 		\begin{lstlisting}[language=C++, caption=testsuite.cpp]
@@ -240,7 +244,7 @@ void TestSuite::executeTests()
   }
 }
 \end{lstlisting}
-		Alle Testklassen registrieren sich durch eine statische instanz selbst in der QList<QObject *> m\_suites. Mit einem iterator wird durch die Liste m\_suites iteriert und jede Testklasse mit QTest::qExec() aufgerufen. QTest::qExec() führt alle Methoden in der Klasse auf die als private slots deklariert sind. Sollten darunter die Methoden initTestCase() oder init() deklariert sein, so werden diese vor jedem Test einzelnen Test, beziehungsweise vor allen Tests ausgeführt. Analog geschieht dies wenn die Methoden cleanupTestCase() oder cleanup() deklariert sind nach den Tests. QTest::qExec() gibt als Rückgabewert '0' falls keiner der Tests fehlgeschlagen ist, andernfalls die Anzahl an fehlgeschlagenen Methoden. Die Ergebnisse der Tests werden auf der Konsole ausgegeben und sollte ein oder mehrere Tests fehlgeschlagen sein wird das Programm beendet.
+		Alle Testklassen registrieren sich durch eine statische Instanz selbst in der QList<QObject *> m\_suites. Mit einem iterator wird durch die Liste m\_suites iteriert und jede Testklasse mit QTest::qExec() aufgerufen. QTest::qExec() führt alle Methoden in der Klasse auf, die als private slots deklariert sind. Sollten darunter die Methoden initTestCase() oder init() deklariert sein, so werden diese vor jedem Test einzelnen Test, beziehungsweise vor allen Tests ausgeführt. Analog geschieht dies, wenn die Methoden cleanupTestCase() oder cleanup() deklariert sind nach den Tests. QTest::qExec() gibt als Rückgabewert '0' falls keiner der Tests fehlgeschlagen ist, andernfalls die Anzahl an fehlgeschlagenen Methoden. Die Ergebnisse der Tests werden auf der Konsole ausgegeben und sollte ein oder mehrere Tests fehlgeschlagen sein wird das Programm beendet.
 		
 		\newpage
 		
@@ -288,9 +292,9 @@ class QtGuiTest : public TestSuite
 };
 		\end{lstlisting}
 	
-		Zudem ist die Klasse MainWindow als friend class markiert um auf die UI Elemente des MainWindows in den Tests zugreifen zu können. Ein Pointer auf eine Instanz von MainWindow wird in der Membervariable m\_window gespeichert.
+		Zudem ist die Klasse MainWindow als friend class markiert, um auf die UI Elemente des MainWindows in den Tests zugreifen zu können. Ein Pointer auf eine Instanz von MainWindow wird in der Membervariable m\_window gespeichert.
 		
-		In QtGuiTest::initTestCase() wird die Membervariable m\_window initializiert und das Window angezeigt. Sollte das anzeigen des Windows fehlschlagen wird mit dem Makro QVERIFY2() ein Fehler ausgegeben.
+		In QtGuiTest::initTestCase() wird die Membervariable m\_window initializiert und das Window angezeigt. Sollte das Anzeigen des Windows fehlschlagen, wird mit dem Makro QVERIFY2() ein Fehler ausgegeben.
 		
 		\begin{lstlisting}[language=C++, caption=qtguitest.cpp]	
 void QtGuiTest::initTestCase()
@@ -309,7 +313,7 @@ void QtGuiTest::initTestCase()
   QVERIFY2(m_window, "Window could not be crated");
 }		
 		\end{lstlisting}
-		Die Methode QtGuiTest::testConnectButton() wird der Mauszeiger auf den Connect Button im vierten Bereich des Fensters bewegt und daraufhin angeklickt. Nach dem Klick wird überprüft ob die Anzeige im zweiten Bereich der Anwendung anzeigt das eine aktive Verbindung besteht.
+		Die Methode QtGuiTest::testConnectButton() wird der Mauszeiger auf den Connect Button im vierten Bereich des Fensters bewegt und daraufhin angeklickt. Nach dem Klick wird überprüft, ob die Anzeige im zweiten Bereich der Anwendung anzeigt, dass eine aktive Verbindung besteht.
 	
 		\begin{lstlisting}[language=C++, caption=qtguitest.cpp]
 void QtGuiTest::testConnectButton()
@@ -330,7 +334,7 @@ void QtGuiTest::testConnectButton()
 }
 		\end{lstlisting}
 		
-		Durch QtGuiTest::testSlider() wird der Mauszeiger auf die Nullposition des Geschwindigkeitssliders im dritten Bereich der Anwendung bewegt. Durch den Aufruf von QTest::mousePress() wird die linke Maustaste gedrückt gehalten. Durch das Bewegen der Maus um 50 Pixel nach rechts sollte der Geschwindigkeitsslider auf dem Wert 6 stehen, was mit dem Makro QCOMPARE() überprüft wird. Ebenso wird geprüft ob das Label das den Wert des Sliders dem Nutzer anzeigt ebenso den Wert 6 anzeigt.
+		Durch QtGuiTest::testSlider() wird der Mauszeiger auf die Nullposition des Geschwindigkeitssliders im dritten Bereich der Anwendung bewegt. Durch den Aufruf von QTest::mousePress() wird die linke Maustaste gedrückt gehalten. Mit Bewegen der Maus um 50 Pixel nach rechts sollte der Geschwindigkeitsslider auf dem Wert 6 stehen, was mit dem Makro QCOMPARE() überprüft wird. Ebenso wird geprüft, ob das Label, das den Wert des Sliders dem Nutzer anzeigt, ebenso den Wert 6 anzeigt.
 		\begin{lstlisting}[language=C++, caption=qtguitest.cpp]
 void QtGuiTest::testSlider()
 {
@@ -352,7 +356,7 @@ void QtGuiTest::testSlider()
   QCOMPARE(speedLabel->text(), "6");
 }
 		\end{lstlisting}
-		Mit der Methode QtGuiTest::testErrorInput() wird der QString 'error' durch die Methode QTest::keyClicks() in das Input Feld geschrieben. Durch drücken des Start Buttons triggert der Input 'error' den Machine State 'Error', worauf die Error Anzeige rot wird. Mit drücken des Reset Error and Stop Button wird dieser Status wieder zurücksetzt und die Anzeige aktualisiert. Dieses Verhalten wird durch den Testcase QtGuiTest::testErrorInput() vollständig abgedeckt.
+		Mit der Methode QtGuiTest::testErrorInput() wird der QString 'error' durch die Methode QTest::keyClicks() in das Input Feld geschrieben. Durch Drücken des Startbuttons triggert der Input 'error' den Machine State 'Error', worauf die Error Anzeige rot wird. Mit Drücken des Reset Error and Stop Button wird dieser Status wieder zurücksetzt und die Anzeige aktualisiert. Dieses Verhalten wird durch den Testcase QtGuiTest::testErrorInput() vollständig abgedeckt.
 		\begin{lstlisting}[language=C++, caption=qtguitest.cpp]
 void QtGuiTest::testErrorInput()
 {    
@@ -394,9 +398,14 @@ void QtGuiTest::testErrorInput()
 		Auf die Methoden QtGuiTest::testClearInput(), QtGuiTest::testDisconnect() und 	QtGuiTest::testRandomInput() wird an diesem Punkt des Dokuments nicht näher eingegangen, da der Testaufbau, Syntax sowie der erreichbare Umfang des Qt Test Frameworks durch die gezeigten Methoden ersichtlich sein sollte.
 		
 \chapter{Vergleich}
-
-	\section{Squish}
-	\section{Qt Test}
+	\paragraph{} Im Kapitel Vergleich wird zuerst geprüft welche der im ersten Kapitel gestellten Anforderungen von Squish und welche von Qt Test erfüllt werden. im Anschluss werden die beiden Frameworks miteinander verglichen.
+	\section{Anforderungserfüllung von Squish}
+	\paragraph{}Der genaue Preis von Squish konnte nicht ermittelt werden. Laut der Webseite werden die Squish Subscriptions als floating licenses vertrieben, die alles von kleinen individuellen Gruppen bis hin zu großen Unternehmen abdeckt \cite{SquishPrice}. Auf Nachfrage bei Froglogic per Mail ist der Preis abhängig von Branche, Unternehmensgröße sowie der Anzahl von laufenden Testinstanzen. Der genaue Preis lässt sich deshalb nicht ermitteln und Anforderung [01] ist daher nicht quantifizierbar und nicht exakt beantwortbar. [02] Wie eben genannt wird Squish über eine gesonderte Lizenz vertrieben, die nicht mit GPL vergleichbar ist. [03] Squish ist keine Open-Source-Software. Um Squish in die vorhandene Pipeline zu integrieren, [04] wird etwa ein halber Tag bis Tag benötigt. [05] Squish ist nicht im Qt Editor ausführbar. Um einen einzelnen Test in Squish zu erstellen, [06] ist vergleichsweise wenig Zeit nötig. Dies gilt sowohl für das Aufnehmen der Tests über das UI als auch das direkte Schreiben der Tests. Die benötigte Zeit skaliert logischerweise mit der Komplexität des Tests. [07] Der Testcode ist für Entwickler leicht lesbar. [08] Durch den geringen Aufwand zum Erstellen eines Tests und der guten Lesbarkeit ist der Aufwand einen Test zu ändern [08] gering. Bei Änderungen im UI, die nicht die Identifier oder geprüfte Attribute der UI Elemente betreffen, beispielsweise die Position, sind keine Änderungen der Test Cases nötig. [09] Es gibt keinerlei Foren und kaum Fragen auf Stack Overflow zu Squish. Mit der Lizenz ist technischer Support mit inbegriffen. Die Frage nach der Lizenz war am nächsten Werktag beantwortet. Da Squish seit 14 Jahren auf dem Markt ist, wird von einer hohen Robustheit und Reife [10] ausgegangen. Es sind keinerlei technische Probleme beim Testen aufgetreten. [11] In der gekauften Lizenz von Squish sind Updates inklusive. Wie häufig Updates von Squish ausgerollt werden und wie umfangreich diese sind, konnte nicht quantifiziert werden. [12] Es konnten keine Qt Widgets gefunden werden, die nicht mit Squish testbar sind. [13] Die Ausführung der 6 Tests dauerte 18 Sekunden. Die Dokumentation [14] von Squish ist sehr umfangreich. Nach einer kurzen Einfindungsphase war die Dokumentation gut verständlich und gesuchte Informationen konnten in angemessener Zeit gefunden werden. [15] Die Testergebnisse sind automatisiert auswertbar.
+	\section{Anforderungserfüllung von Qt Test}
+	\paragraph{} [01] Qt und damit Qt Test ist, solange keine kommerzielle Lizenz nicht benötigt wird, kostenlos. [02] Qt ist unter GPL und LGPLv3 verfügbar. [03] Die LTS Version von Qt ist nicht Open Source. [04] Qt Test ist mit minimalem Aufwand in die Pipeline integrierbar und im Qt Editor ausführbar [05]. [06] Der Aufwand um einen Test zu erstellen ist angemessen. [07] Da es sich um C++ Code handelt, sind die Tests für Entwickler ohne Mehraufwand lesbar. [08] Da es sich um C++ Code handelt, ist der Aufwand um Änderungen einzubringen hauptsächlich von der Code-Qualität abhängig. Bei Änderungen im UI, die nicht die Identifier oder geprüfte Attribute der UI Elemente betreffen, beispielsweise die Position, sind keine Änderungen der Test Cases nötig. [09] Wie in Kapitel 3.1 erwähnt, handelt es sich um eine mittelgroße, aktive Community. Zusätzlicher Support von Qt könnte über eine kommerzielle Lizenz eingekauft werden. [10] Da Qt seit 2003 entwickelt wird und von vielen Unternehmen verwendet, weshalb Qt Test als ausgereift und robust und ausgereift eingestuft wird. Während des Tests gab es keine Probleme. [11] Es gibt regelmäßig Updates sowie neue Versionen von Qt. Qt Test deckt alle Qt Widgets [12] ab. Die 6 Testcases für die Anwendung benötigen eine Zeit von 2150ms. Die Laufzeit [13] ist damit sehr gering. [14] Die Dokumentation von Qt und Qt Test ist qualitativ gut und sehr umfangreich. [15] Die Tests sind automatisiert auswertbar.
 	\section{Vergleich}
+	\paragraph{}Für Anforderung [01] und [02] schneidet Qt Test eindeutig besser ab als Squish. Anforderung [03] wird von keinen von beiden erfüllt. Da Qt Test leichter in die vorhandene Pipeline integrierbar ist, als Squish ist Qt Test für Anforderung [04] zu bevorzugen. Allerdings ist die benötigte Zeit um Squish in die Pipeline zu integrieren tragbar.[05] Qt Test ist im Qt Editor ausführbar, Squish nicht. Der zeitliche Aufwand um einen Test zu erstellen [06] ist bei Squish geringer als bei Qt Test. Anforderung [07] bis [12] werden von beiden Kandidaten gleichermaßen erfüllt. Die Laufzeit von Qt Test ist mit 2,2 Sekunden bedeutend geringer als die 18 Sekunden von Qt Test. Die Anforderungen [14] sowie [15] sind sowohl mit Squish als auch mit Qt Test gegeben.
+	\paragraph{}Im direkten Vergleich erfüllt Qt Test die gestellten Anforderungen besser als Squish. Daher wird die Entscheidung getroffen, automatisierte UI Tests mit dem Qt Test Framework durchzuführen. Diese Entscheidung basiert vor allem an den niedrigeren Kosten von Qt Test sowie der geringeren Laufzeit gegenüber Squish. Allerdings ist zu erwähnen, dass Squish ebenso ein akzeptables Framework zum automatisierten Testen des UIs ist.
 
 \chapter{Fazit}
+	\paragraph{} Automatisiertes Testen von UIs während der Entwicklung ist Industriestandard. Für unsere Anwendung kamen die drei Frameworks OpenHMI Tester, Squish und Qt Test infrage. Nachdem OpenHMI Tester nicht in einen lauffähigen Stand gebracht werden konnte, wurde OpenHMI Tester nicht weiter verfolgt. Deshalb wurden nur für Squish und Qt Tests Test Cases geschrieben und geprüft, inwiefern die Frameworks die in Kapitel 1.3 gestellten Anforderungen erfüllen. Sowohl Squish als auch Qt Test haben die gestellten Anforderungen akzeptabel erfüllt. Qt Test kostet im Gegensatz zu Squish kein Geld, war schneller aufzusetzen ist und die Test Cases haben eine geringere Laufzeit. Aus diesen Gründen wurde die Entscheidung getroffen, Qt Test zu verwenden.
